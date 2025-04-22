@@ -1,9 +1,14 @@
 const mongoose = require("mongoose");
 require ("dotenv").config();
 
-mongoose.connect(process.env.MONGODB_URI)
-    .then(() => console.log("MongoDB connected"))
-    .catch(err => console.error("MongoDB connection error:", err));
+mongoose.connect(process.env.MONGODB_URL)
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.error("Error connecting to MongoDB:", err);
+  });
+
 
 // Create a schema for user
 const userSchema = new mongoose.Schema({
